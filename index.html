@@ -1674,31 +1674,35 @@
             });
             
             // 设置登录按钮事件
-            document.querySelector('.btn-outline').addEventListener('click', function() {
-                const text = document.querySelector('.btn-outline span').textContent;
-                if(text.includes('Logout') || text.includes('Шығу') || text.includes('Выйти') || text.includes('退出')) {
-                    handleLogout();
-                } else {
-                    showLoginModal();
-                }
-            });
+            document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.btn-outline').addEventListener('click', function() {
+        const text = document.querySelector('.btn-outline span').textContent;
+        if(text.includes('Logout') || text.includes('Шығу') || text.includes('Выйти') || text.includes('退出')) {
+            handleLogout();
+        } else {
+            showLoginModal();
+        }
+    });
+});
             
             // 设置测验类型切换
-            document.querySelectorAll('.quiz-type-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    document.querySelectorAll('.quiz-type-btn').forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    currentQuizType = this.getAttribute('data-quiz-type');
-                    
-                    // 切换测验题型显示
-                    document.getElementById('mcq-options').style.display = currentQuizType === 'multiple-choice' ? 'grid' : 'none';
-                    document.getElementById('fill-in-blank').className = currentQuizType === 'fill-in-blank' ? 'fill-in-blank active' : 'fill-in-blank';
-                    document.getElementById('spelling-practice').className = currentQuizType === 'spelling' ? 'spelling-practice active' : 'spelling-practice';
-                    
-                    // 生成新题型的题目
-                    generateQuizQuestion();
-                });
-            });
+            document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.quiz-type-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.quiz-type-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            currentQuizType = this.getAttribute('data-quiz-type');
+            
+            // 切换测验题型显示
+            document.getElementById('mcq-options').style.display = currentQuizType === 'multiple-choice' ? 'grid' : 'none';
+            document.getElementById('fill-in-blank').className = currentQuizType === 'fill-in-blank' ? 'fill-in-blank active' : 'fill-in-blank';
+            document.getElementById('spelling-practice').className = currentQuizType === 'spelling' ? 'spelling-practice active' : 'spelling-practice';
+            
+            // 生成新题型的题目
+            generateQuizQuestion();
+        });
+    });
+});
             
             // 设置词库级别选择
             document.querySelectorAll('.vocab-btn').forEach(btn => {
